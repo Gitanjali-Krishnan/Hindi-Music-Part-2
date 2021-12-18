@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="Music logo.png" rel="icon">
+    <title>Music 3</title>
+    <style>
+        #player{
+            height: 680px;
+            width: 500px;
+            display: block;
+            margin: auto;
+            background-color: cadetblue;
+            border-radius: 25px;
+            box-shadow: 15px 15px 15px grey;
+        }
+        .rotate{
+            animation: rotation 3s;
+        }
+        .linear{
+            animation-timing-function: linear;
+        }
+        .infinite{
+            animation-iteration-count: infinite;
+        }
+        @keyframes rotation{
+            from{transform:rotate(0deg);}
+            to{transform:rotate(359deg)}
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="player" style="padding-top: 25px;">
+            <img src="25.png" style="height: 300px; width: 300px; margin: auto; display: block; border-radius: 50%;" id="image" class="linear infinite">
+            <img src="previous.png" style="margin-top: 170px; display: inline-block; width: 20%;margin-left: 95px;" onclick="pre()">
+            <img src="play.png" style="margin-top: 170px; display: inline-block; width: 20%;" onclick="start()"  id="lol">
+            <img src="pause.png" style="margin-top: 170px; display: none; width: 20%;" onclick="pause()"  id="lol1">
+            <img src="next.png"  style="margin-top: 170px; display: inline-block; width: 20%;" onclick="next()">
+    </div>
+    <audio src="SONG 5.mp3" controls id="audio" style="display: none;"></audio>
+  
+    <script>
+        var images=["25.png","26.png","27.png","28.png","29.png","30.png","31.png","32.png","33.png","34.png","35.png","36.png","37.png","38.png","39.png","40.png","41.png","42.png","43.png","44.png","45.png","46.png","47.png","48.png","49.png","50.png","51.png","52.png","53.png","54.png","55.png","56.png","57.png"]
+        var player = false;
+        function start(){
+            document.getElementById("audio").play()
+            document.getElementById("lol").style.display="none"
+            document.getElementById("lol1").style.display="inline-block"
+            document.getElementById("image").classList.add("rotate")
+        }
+        function pause(){
+            document.getElementById("audio").pause()
+            document.getElementById("lol1").style.display="none"
+            document.getElementById("lol").style.display="inline-block"
+            document.getElementById("image").classList.remove("rotate")
+        }
+        var songs = ["Ajooba.mp3","Amar Akbar Anthony.mp3","Bol Baby Bol Rock.mp3","Bole Chudiyan.mp3","Chaiyya Chaiyya.mp3","Columbaus.mp3","Deewana Hai Dekho.mp3","Dil Chahta Hai.mp3","Dil Se Re.mp3","Ghungroo.mp3","Hai Rabba.mp3","Humko Tumse Ho Gaya Hai Pyar.mp3","Inn Lamhon Ke Daaman Mein.mp3","Jaane Kyon Log Pyar.mp3","Jashn-E-Bahaaraa.mp3","Jhoom Le Jhoom Le.mp3","Hawa Hawaii.mp3","Kabhi Khushi Kabhie Gham.mp3","Kehne Ko Dadi.mp3","Kehta Hai Dil Mera.mp3","Khwaja Mere Khwaja.mp3","Koi Kahe Kehta Rahe.mp3","Koi Mil Gaya.mp3","Kuch Kuch Hota Hai.mp3","Ladki Badi Anjani Hai.mp3","London Thumakda.mp3","Main Aisa Kyon Hoon.mp3","Aankh Marey.mp3","Chale Chalo.mp3","Chittiyaan Kalaiyaan.mp3","Ghanan Ghanan.mp3","Kala Chashma.mp3","Pallo Latke.mp3","Gali Gali.mp3"];
+        var i = 0;
+        function next(){
+            i =(i+1)%33;
+            document.getElementById("audio").src= songs[i];
+            document.getElementById("image").src=images[i];
+            start()
+        }
+        function pre(){
+            if(i>0)
+            {
+                            i--;
+                            document.getElementById("audio").src = songs[i];
+                            document.getElementById("image").src=images[i]
+                            start()
+            }
+        }
+    </script>
+</body>
+</html>
